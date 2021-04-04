@@ -11,7 +11,7 @@ router.route('/').get((req, res) => {
 
 router.route('/:id').get((req, res) => {
   res.json(
-    db.concerts.filter(item => item.id === parseInt(req.params.id))
+    db.concerts.filter(item => item.id === req.params.id)
   );
 });
 
@@ -19,22 +19,22 @@ router.route('/').post((req, res) => {
   const {performer, genre, price, day, image} = req.body;
   db.concerts.push({
     id: uuidv4(),
-    performer,
-    genre,
-    price,
-    day,
-    image,
+     performer,
+     genre,
+     price,
+     day,
+     image,
   });
  res.json(result);
 });
 
 router.route('/:id').put((req, res) => {
   const {performer, genre, price, day, image} = req.body;
-  const found = db.concerts.find(element => element.id === req.params.id);
+  const found = db.concerts.find(element => `${element.id}` === req.params.id);
   const indexOfFoundElem = db.concerts.indexOf(found);
   const updatedElem = ({
     id: req.params.id,
-    performer,
+    performer: performer,
     genre,
     price,
     day,

@@ -35,11 +35,11 @@ router.route('/:id').put((req, res) => {
   const indexOfFoundElem = db.testimonials.indexOf(found);
   const updatedElem = ({
     id: req.params.id,
-    author,
-    text
+    author: req.body.author,
+    text: req.body,
   });
   db.testimonials[indexOfFoundElem] = updatedElem;
-  res.json(result);
+  return res.json(result);
 });
 
 router.route('/:id').delete((req, res) => {
