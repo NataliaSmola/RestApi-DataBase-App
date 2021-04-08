@@ -5,7 +5,6 @@ import './OrderTicketForm.scss';
 import SeatChooser from './../SeatChooser/SeatChooserContainer';
 
 class OrderTicketForm extends React.Component {
-
   state = {
     order: {
       client: '',
@@ -48,11 +47,11 @@ class OrderTicketForm extends React.Component {
       await addSeat(order);
       this.setState({
         order: {
-          client: '',
-          email: '',
-          day: 1,
-          seat: '',
-        },
+        client: '',
+        email: '',
+        day: 1,
+        seat: '',
+      },
         isError: false,
       });
     } else {
